@@ -7,7 +7,6 @@
  VERSION: 0.1.0
  */
 
-#include "constants.h"
 #include "movement.h"
 
 /*Sets up motor pins in the main setup function
@@ -38,6 +37,21 @@ void setup() {
 void loop() {
   
   // moves the robot forward
-  moveForward(150);
+  moveForward(200);
+  delay(1000);
+  
+  moveBackward(200);
+  delay(1000);
+  
+  turnLeft(255, 1000);
 
+  turnLeftBack(255, 1000);
+  
+  turnRight(255, 1000);
+  
+  turnRightBack(255, 1000);
+  
+  stopRoverMotors();
+  delay(50000);
+  
 }
