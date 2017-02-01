@@ -12,3 +12,6 @@
 
 #define ROVER_FORWARD_DIRECTION 1 //rover forward direction
 #define ROVER_BACKWARD_DIRECTION 2 //rover backward direction
+
+#define ROVER_TURN_LEFT 1 //rover forward direction
+#define ROVER_TURN_RIGHT 2 //rover backward direction
