@@ -3,26 +3,39 @@
  */
 
 #include "constants.h"
+#include "motor.h"
 
 /*
- * Moves the rover forward, takes the rover speed
- * as the input
+ * Moves the rover in the specified direction
  * 
  * Moves the rover by speeding up motor A and motor B in
  * two opposite directions, this is needed because the motors have 
  * been placed such that moving these 2 motors in opposite direction
  * moves the rover in 1 direction: backward or forward.
  */
-void moveForward(int roverSpeed){
+void moveRover(int roverSpeed, int roverDirection){
   
-  digitalWrite(motorA_dir_pin, LOW);
-  digitalWrite(motorA_brake_pin, LOW);
-  analogWrite(motorA_speed_pin, roverSpeed);
+  switch(roverDirection){
+    case ROVER_FORWARD_DIRECTION:
+      roverMotorsForward();
+    break;
+    case ROVER_BACKWARD_DIRECTION:
+      roverMotorsBackward();
+    break;
+  }
 
-  digitalWrite(motorB_dir_pin, HIGH);
-  digitalWrite(motorB_brake_pin, LOW);
+  startRoverMotors();
+
+  analogWrite(motorA_speed_pin, roverSpeed);
   analogWrite(motorB_speed_pin, roverSpeed);
-  
+}
+
+/*
+ * Moves the rover forward, takes the rover speed
+ * as the input
+ */
+void moveForward(int roverSpeed){
+  moveRover(roverSpeed, ROVER_FORWARD_DIRECTION);
 }
 
 /*
@@ -30,20 +43,11 @@ void moveForward(int roverSpeed){
  * as the input
  */
 void moveBackward(int roverSpeed){
-  
-  digitalWrite(motorA_dir_pin, HIGH);
-  digitalWrite(motorA_brake_pin, LOW);
-  analogWrite(motorA_speed_pin, roverSpeed);
-
-  digitalWrite(motorB_dir_pin, LOW);
-  digitalWrite(motorB_brake_pin, LOW);
-  analogWrite(motorB_speed_pin, roverSpeed);
-
+  moveRover(roverSpeed, ROVER_BACKWARD_DIRECTION);
 }
 
 /*
- * Turn the rover left, takes the rover speed
- * as the input and the turnDelay
+ * Turns the rover in the specified direction
  * 
  * The rover turns left by speeding up motorA
  * and braking/ stopping motorB. This give a 
