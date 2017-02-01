@@ -5,7 +5,7 @@
 #include "constants.h"
 
 /*
- * Moves the robot forward, takes the robot speed
+ * Moves the rover forward, takes the rover speed
  * as the input
  * 
  * Moves the rover by speeding up motor A and motor B in
@@ -26,7 +26,7 @@ void moveForward(int roverSpeed){
 }
 
 /*
- * Moves the robot backward, takes the robot speed
+ * Moves the rover backward, takes the rover speed
  * as the input
  */
 void moveBackward(int roverSpeed){
