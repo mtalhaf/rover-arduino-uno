@@ -40,7 +40,26 @@ void moveBackward(int roverSpeed){
   analogWrite(motorB_speed_pin, roverSpeed);
 
 }
-  digitalWrite(motorB_dir_pin, HIGH);
-  digitalWrite(motorB_brake_pin, LOW);
-  analogWrite(motorB_speed_pin, roverSpeed);
+
+/*
+ * Turn the rover left, takes the rover speed
+ * as the input and the turnDelay
+ * 
+ * The rover turns left by speeding up motorA
+ * and braking/ stopping motorB. This give a 
+ * turning effect which in turn the rover.
+ * After the delay motorA is also stopped.
+ */
+void turnLeft(int roverSpeed, int turnDelay){
+
+  digitalWrite(motorB_brake_pin, HIGH);
+
+  digitalWrite(motorA_dir_pin, LOW);
+  digitalWrite(motorA_brake_pin, LOW);
+  analogWrite(motorA_speed_pin, roverSpeed);
+
+  delay(turnDelay);
+
+  digitalWrite(motorA_brake_pin, HIGH);
+  
 }
