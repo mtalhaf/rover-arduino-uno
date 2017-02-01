@@ -9,3 +9,6 @@
 #define motorB_dir_pin 13 //Direction pin number for motor B
 #define motorB_speed_pin 11 //Speed pin number for motor B, the pin is analog PWM
 #define motorB_brake_pin 8 //Brake pin number for motor B
+
+#define ROVER_FORWARD_DIRECTION 1 //rover forward direction
+#define ROVER_BACKWARD_DIRECTION 2 //rover backward direction
