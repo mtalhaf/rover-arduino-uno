@@ -7,7 +7,7 @@
 /*
  * Motor A
  */
-void motorA_DirectionForward(){
+void motorA_Forward(){
     digitalWrite(motorA_dir_pin, LOW);// this is set to LOW because this makes the rover goes forward
 }
 
@@ -15,7 +15,7 @@ void motorA_Stop(){
     digitalWrite(motorA_brake_pin, HIGH); // stops the motor/ applys the brake
 }
 
-void motorA_DirectionBackward(){
+void motorA_Backward(){
     digitalWrite(motorA_dir_pin, HIGH);// this is set to HIGH because this makes the rover goes backwards
 }
 
@@ -27,7 +27,7 @@ void motorA_Start(){
 /*
  * Motor B
  */
-void motorB_DirectionForward(){
+void motorB_Forward(){
     digitalWrite(motorB_dir_pin, HIGH);// this is set to HIGH because this makes the rover goes forward
 }
 
@@ -35,7 +35,7 @@ void motorB_Stop(){
     digitalWrite(motorB_brake_pin, HIGH); // stops the motor/ applys the brake
 }
 
-void motorB_DirectionBackward(){
+void motorB_Backward(){
     digitalWrite(motorB_dir_pin, LOW);// this is set to LOW because this makes the rover goes backwards
 }
 
