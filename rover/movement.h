@@ -47,23 +47,45 @@ void moveBackward(int roverSpeed){
 /*
  * Turns the rover in the specified direction
  * 
- * The rover turns left by speeding up motorA
- * and braking/ stopping motorB. This give a 
- * turning effect which in turn the rover.
- * After the delay motorA is also stopped.
+ * The rover turns by speeding up 1 motor
+ * and braking/ stopping the other. This gives a 
+ * turning effect which turns the rover.
+ * 
+ * After the delay the motors are also stopped.
  */
-void turnLeft(int roverSpeed, int turnDelay){
 
-  digitalWrite(motorB_brake_pin, HIGH);
+ void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay){
+    
+  switch(roverTurn){    
+    case ROVER_TURN_LEFT:
+      motorB_Stop();
 
-  digitalWrite(motorA_dir_pin, LOW);
-  digitalWrite(motorA_brake_pin, LOW);
-  analogWrite(motorA_speed_pin, roverSpeed);
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorA_Forward() : motorA_Backward();
+      motorA_Start();
+      motorA_Speed(roverSpeed);
+    break;
+    
+    case ROVER_TURN_RIGHT:
+      motorA_Stop();
+
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorB_Forward() : motorB_Backward();
+      motorB_Start();
+      motorB_Speed(roverSpeed);
+    break;
+  }
 
   delay(turnDelay);
-
-  digitalWrite(motorA_brake_pin, HIGH);
+  stopRoverMotors();
   
+}
+
+
+ /*
+  * Turn the rover left, takes the rover speed
+  * as the input and the turnDelay
+  */
+void turnLeft(int roverSpeed, int turnDelay){
+  turnRover(roverSpeed, ROVER_FORWARD_DIRECTION, ROVER_TURN_LEFT, turnDelay);
 }
 
 /*
@@ -71,17 +93,7 @@ void turnLeft(int roverSpeed, int turnDelay){
  * as the input and the turnDelay
  */
 void turnRight(int roverSpeed, int turnDelay){
-
-  digitalWrite(motorA_brake_pin, HIGH);
-
-  digitalWrite(motorB_dir_pin, HIGH);
-  digitalWrite(motorB_brake_pin, LOW);
-  analogWrite(motorB_speed_pin, roverSpeed);
-
-  delay(turnDelay);
-
-  digitalWrite(motorB_brake_pin, HIGH);
-  
+  turnRover(roverSpeed, ROVER_FORWARD_DIRECTION, ROVER_TURN_RIGHT, turnDelay);
 }
 
 /*
@@ -89,17 +101,7 @@ void turnRight(int roverSpeed, int turnDelay){
  * as the input and the turnDelay
  */
 void turnLeftBack(int roverSpeed, int turnDelay){
-
-  digitalWrite(motorB_brake_pin, HIGH);
-
-  digitalWrite(motorA_dir_pin, HIGH);
-  digitalWrite(motorA_brake_pin, LOW);
-  analogWrite(motorA_speed_pin, roverSpeed);
-
-  delay(turnDelay);
-
-  digitalWrite(motorA_brake_pin, HIGH);
-  
+  turnRover(roverSpeed, ROVER_BACKWARD_DIRECTION, ROVER_TURN_LEFT, turnDelay);
 }
 
 /*
@@ -107,16 +109,6 @@ void turnLeftBack(int roverSpeed, int turnDelay){
  * as the input and the turnDelay
  */
 void turnRightBack(int roverSpeed, int turnDelay){
-
-  digitalWrite(motorA_brake_pin, HIGH);
-
-  digitalWrite(motorB_dir_pin, LOW);
-  digitalWrite(motorB_brake_pin, LOW);
-  analogWrite(motorB_speed_pin, roverSpeed);
-
-  delay(turnDelay);
-
-  digitalWrite(motorB_brake_pin, HIGH);
-  
+  turnRover(roverSpeed, ROVER_BACKWARD_DIRECTION, ROVER_TURN_RIGHT, turnDelay);
 }
 
