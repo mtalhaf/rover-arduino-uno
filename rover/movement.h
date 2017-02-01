@@ -26,8 +26,7 @@ void moveRover(int roverSpeed, int roverDirection){
 
   startRoverMotors();
 
-  analogWrite(motorA_speed_pin, roverSpeed);
-  analogWrite(motorB_speed_pin, roverSpeed);
+  setRoverSpeed(roverSpeed);
 }
 
 /*
