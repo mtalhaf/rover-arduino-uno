@@ -2,7 +2,6 @@
  * Basic rover movement functions are defined here
  */
 
-#include "constants.h"
 #include "motor.h"
 
 /*
