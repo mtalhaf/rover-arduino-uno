@@ -24,7 +24,7 @@ void moveRover(int roverSpeed, int roverDirection){
     break;
   }
 
-  startRoverMotors(); // Start the rover motors
+  disengageRoverBrakes(); // disengages the rover brakes so it can move
 
   setRoverSpeed(roverSpeed); // Set the rover speed and starts moving it
 }
@@ -62,14 +62,14 @@ void moveBackward(int roverSpeed){
     case ROVER_TURN_LEFT:
       motorB_Stop(); // stops motor B
       roverDirection == ROVER_FORWARD_DIRECTION ? motorA_Forward() : motorA_Backward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
-      motorA_Start(); // starts motor A
+      motorA_DisengageBrakes(); // disengages motor A brakes so it can move
       motorA_Speed(roverSpeed); // sets motor A speed and starts it
     break;
     
     case ROVER_TURN_RIGHT:
       motorA_Stop(); // stops motor A
       roverDirection == ROVER_FORWARD_DIRECTION ? motorB_Forward() : motorB_Backward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
-      motorB_Start(); // starts motor B
+      motorB_DisengageBrakes(); // disengages motor B brakes so it can move
       motorB_Speed(roverSpeed); // sets motor B speed and starts it
     break;
   }
