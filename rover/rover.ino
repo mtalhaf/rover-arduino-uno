@@ -4,7 +4,7 @@
  The code is supposed to run on the Arduino UNO and is built for
  SOFT561 module as a project.
 
- VERSION: 0.1.0
+ VERSION: v0.1.1
  */
 
 #include "movement.h"
