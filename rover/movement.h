@@ -17,11 +17,11 @@ void moveForward(int roverSpeed){
   
   digitalWrite(motorA_dir_pin, HIGH);
   digitalWrite(motorA_brake_pin, LOW);
-  digitalWrite(motorA_speed_pin, roverSpeed);
+  analogWrite(motorA_speed_pin, roverSpeed);
 
   digitalWrite(motorB_dir_pin, LOW);
   digitalWrite(motorB_brake_pin, LOW);
-  digitalWrite(motorB_speed_pin, roverSpeed);
+  analogWrite(motorB_speed_pin, roverSpeed);
   
 }
 
@@ -32,9 +32,9 @@ void moveForward(int roverSpeed){
 void moveBackward(int roverSpeed){
   digitalWrite(motorA_dir_pin, LOW);
   digitalWrite(motorA_brake_pin, LOW);
-  digitalWrite(motorA_speed_pin, roverSpeed);
+  analogWrite(motorA_speed_pin, roverSpeed);
 
   digitalWrite(motorB_dir_pin, HIGH);
   digitalWrite(motorB_brake_pin, LOW);
-  digitalWrite(motorB_speed_pin, roverSpeed);
+  analogWrite(motorB_speed_pin, roverSpeed);
 }
