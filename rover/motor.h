@@ -23,6 +23,10 @@ void motorA_Start(){
     digitalWrite(motorA_brake_pin, LOW); // starts the motor/ disengages the brakes
 }
 
+void motorA_Speed(int motorSpeed){
+  analogWrite(motorA_speed_pin, motorSpeed); // sets motor A speed
+}
+
 
 /*
  * Functions for Motor B
@@ -43,27 +47,41 @@ void motorB_Start(){
     digitalWrite(motorB_brake_pin, LOW); // starts the motor/ disengages the brakes
 }
 
+void motorB_Speed(int motorSpeed){
+  analogWrite(motorB_speed_pin, motorSpeed); // sets motorB speed
+}
+
 /*
  * Functions for Motor A & Motor B both
  */
 
+// moves the rover forward
 void roverMotorsForward(){
   motorA_Forward();
   motorB_Forward();
 }
 
+// moves the rover backward
 void roverMotorsBackward(){
   motorA_Backward();
   motorB_Backward();
 }
 
+// starts both rover motors to move the rover
 void startRoverMotors(){
   motorA_Start();
   motorB_Start();
 }
 
+// stops both rover motors
 void stopRoverMotors(){
   motorA_Stop();
   motorB_Stop();
+}
+
+// sets the rover speed
+void setRoverSpeed(int roverSpeed){
+  motorA_Speed(roverSpeed);
+  motorB_Speed(roverSpeed);
 }
 
