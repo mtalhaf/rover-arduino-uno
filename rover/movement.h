@@ -13,19 +13,20 @@
  * moves the rover in 1 direction: backward or forward.
  */
 void moveRover(int roverSpeed, int roverDirection){
-  
+
+  // Switches the rover direction to know which direction to move the motors in
   switch(roverDirection){
     case ROVER_FORWARD_DIRECTION:
-      roverMotorsForward();
+      roverMotorsForward(); // Moves the rover forward
     break;
     case ROVER_BACKWARD_DIRECTION:
-      roverMotorsBackward();
+      roverMotorsBackward();  // Moves the rover backward
     break;
   }
 
-  startRoverMotors();
+  startRoverMotors(); // Start the rover motors
 
-  setRoverSpeed(roverSpeed);
+  setRoverSpeed(roverSpeed); // Set the rover speed and starts moving it
 }
 
 /*
@@ -55,27 +56,26 @@ void moveBackward(int roverSpeed){
  */
 
  void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay){
-    
+
+  // switchs which way to turn the rover in
   switch(roverTurn){    
     case ROVER_TURN_LEFT:
-      motorB_Stop();
-
-      roverDirection == ROVER_FORWARD_DIRECTION ? motorA_Forward() : motorA_Backward();
-      motorA_Start();
-      motorA_Speed(roverSpeed);
+      motorB_Stop(); // stops motor B
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorA_Forward() : motorA_Backward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
+      motorA_Start(); // starts motor A
+      motorA_Speed(roverSpeed); // sets motor A speed and starts it
     break;
     
     case ROVER_TURN_RIGHT:
-      motorA_Stop();
-
-      roverDirection == ROVER_FORWARD_DIRECTION ? motorB_Forward() : motorB_Backward();
-      motorB_Start();
-      motorB_Speed(roverSpeed);
+      motorA_Stop(); // stops motor A
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorB_Forward() : motorB_Backward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
+      motorB_Start(); // starts motor B
+      motorB_Speed(roverSpeed); // sets motor B speed and starts it
     break;
   }
 
-  delay(turnDelay);
-  stopRoverMotors();
+  delay(turnDelay); // delays the turn of the rover by the turn delay, this is needed to make sure that the rover stops after turning
+  stopRoverMotors(); // stops the rover from moving
   
 }
 
