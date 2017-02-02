@@ -1,0 +1,1 @@
+- get led and resistors to use with arduino for debugging purposes (e.g. light up led when obstacle comes)

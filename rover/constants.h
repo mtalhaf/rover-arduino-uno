@@ -10,8 +10,15 @@
 #define motorB_speed_pin 11 //Speed pin number for motor B, the pin is analog PWM
 #define motorB_brake_pin 8 //Brake pin number for motor B
 
+#define ultrasonic_trigger_pin 4 //Trigger pin for the ultra sonic range finder in fron of the rover
+#define ultrasonic_echo_pin 7 //Echo pin for the ultra sonic range finder in fron of the rover
+
 #define ROVER_FORWARD_DIRECTION 1 //rover forward direction
 #define ROVER_BACKWARD_DIRECTION 2 //rover backward direction
 
 #define ROVER_TURN_LEFT 1 //rover forward direction
 #define ROVER_TURN_RIGHT 2 //rover backward direction
+
+#define ROVER_SPEED 255 //rover speed settings
+
+#define OBSTACLE_DETECTION_DISTANCE 25 //maximum distance between rover and an obstacle in cm

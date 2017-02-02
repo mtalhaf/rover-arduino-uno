@@ -54,8 +54,7 @@ void moveBackward(int roverSpeed){
  * 
  * After the delay the motors are also stopped.
  */
-
- void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay){
+void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay){
 
   // switchs which way to turn the rover in
   switch(roverTurn){    
