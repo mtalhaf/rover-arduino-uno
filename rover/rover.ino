@@ -42,10 +42,19 @@ void setUpUltraSonicRangeFinderPins() {
   
 }
 
+/*
+ * Sets up LED pins for debugging purposes, obstacle found, not moving etc etc
+ */
+
+void setUpLedPins(){
+  pinMode(led_pinm OUTPUT);
+}
+
 void setup() {
 
   setUpMotorPins(); //sets up all the motor pins
   setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
+  setUpLedPins(); //sets up led pin
 
 }
 
