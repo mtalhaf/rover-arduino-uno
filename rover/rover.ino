@@ -9,7 +9,8 @@
 
 #include "movement.h"
 
-/*Sets up motor pins in the main setup function
+/*
+ * Sets up motor pins in the main setup function
  * goes through direction and brake pins of motor
  * A and B and initiates them as output pins to 
  * send signals to the motor.
@@ -28,9 +29,23 @@ void setUpMotorPins() {
   
 }
 
+/*
+ * Sets up the pins for the ultrasonic rangefinder.
+ * the trigger pin is used as an output and the echo
+ * pin is to read the input from the rangefinder.
+ */
+
+void setUpUltraSonicRangeFinderPins() {
+  
+  pinMode(ultrasonic_trigger_pin, OUTPUT); //set ultrasonic trigger pin to output
+  pinMode(ultrasonic_echo_pin, INPUT); //set ultrasonic echo pin to output
+  
+}
+
 void setup() {
 
   setUpMotorPins(); //sets up all the motor pins
+  setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
 
 }
 
