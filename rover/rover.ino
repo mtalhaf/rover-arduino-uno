@@ -8,6 +8,7 @@
  */
 
 #include "movement.h"
+#include "obstacle.h"
 
 /*
  * Sets up motor pins in the main setup function
@@ -49,9 +50,23 @@ void setup() {
 
 }
 
-void loop() {
+/*
+ * moves the rover around the room and changes direction if an obstacle is hit
+ */
+void moveRoverAround(){
+
+  moveForward(200);
   
-  // moves the robot forward
+  if (detectObstacles() //if obstacles are detected in front of the rover
+    avoidObstacle(); //avoid the obstacles
+}
+
+/*
+ * moves the rover in all directions
+ */
+
+void moveInAllDirections(){
+   // moves the robot forward
   moveForward(200);
   delay(1000);
   
@@ -67,6 +82,8 @@ void loop() {
   turnRightBack(255, 1000);
   
   stopRoverMotors();
-  delay(50000);
-  
+}
+
+void loop() {
+  moveRoverAround();
 }
