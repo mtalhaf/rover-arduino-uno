@@ -47,7 +47,7 @@ void setUpUltraSonicRangeFinderPins() {
  */
 
 void setUpLedPins(){
-  pinMode(led_pinm OUTPUT);
+  pinMode(led_pin, OUTPUT);
 }
 
 void setup() {
