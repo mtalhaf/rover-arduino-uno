@@ -94,4 +94,5 @@ void moveInAllDirections(){
 
 void loop() {
   moveRoverAround();
+  //turnLedOn();
 }
