@@ -12,8 +12,8 @@
     digitalWrite(ultrasonic_trigger_pin, LOW); //turns the echo off
  }
 
- void getEchoPulse(){
-   duration = pulseIn(ultrasonic_echo_pin, HIGH);
+ long getEchoPulse(){
+   return pulseIn(ultrasonic_echo_pin, HIGH);
  }
 
 /*
