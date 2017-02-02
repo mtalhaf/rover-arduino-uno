@@ -54,7 +54,7 @@ void setup() {
  */
 void moveRoverAround(){
 
-  moveForward(200);
+  moveForward(ROVER_SPEED);
   
   if (detectObstacles()) //if obstacles are detected in front of the rover
     avoidObstacle(); //avoid the obstacles
@@ -66,19 +66,19 @@ void moveRoverAround(){
 
 void moveInAllDirections(){
    // moves the robot forward
-  moveForward(200);
+  moveForward(ROVER_SPEED);
   delay(1000);
   
-  moveBackward(200);
+  moveBackward(ROVER_SPEED);
   delay(1000);
   
-  turnLeft(255, 1000);
+  turnLeft(ROVER_SPEED, 1000);
 
-  turnLeftBack(255, 1000);
+  turnLeftBack(ROVER_SPEED, 1000);
   
-  turnRight(255, 1000);
+  turnRight(ROVER_SPEED, 1000);
   
-  turnRightBack(255, 1000);
+  turnRightBack(ROVER_SPEED, 1000);
   
   stopRoverMotors();
 }
