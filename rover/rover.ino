@@ -56,7 +56,7 @@ void moveRoverAround(){
 
   moveForward(200);
   
-  if (detectObstacles() //if obstacles are detected in front of the rover
+  if (detectObstacles()) //if obstacles are detected in front of the rover
     avoidObstacle(); //avoid the obstacles
 }
 
