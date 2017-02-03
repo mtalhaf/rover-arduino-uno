@@ -17,13 +17,15 @@ boolean detectObstacles(){
   echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = getDistance();
 
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print("distance:");
-    lcd.setCursor(0,1);
-    lcd.print(distanceToObject, DEC);
-
-  //delay(5000);
+  /*
+   * prints out the distance to the nearest object
+   */
+  
+  lcd.clear(); 
+  lcd.setCursor(0,0);
+  lcd.print("distance:");
+  lcd.setCursor(0,1);
+  lcd.print(distanceToObject, DEC);
 
   if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
     return true;
