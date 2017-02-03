@@ -25,7 +25,7 @@ boolean detectObstacles(){
 
   //delay(5000);
 
-  if (distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
+  if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
     return true;
   }else{
     return false;
