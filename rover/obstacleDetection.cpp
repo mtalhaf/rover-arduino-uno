@@ -51,7 +51,7 @@ void ObstacleDetection::avoidObstacle(){
   
   // if obstacle is still there keep turning the rover
   while(obstacle){
-    movement->turnRover(ROVER_SPEED, roverDirection, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
+    movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
     obstacle = detectObstacles();
   }
   
