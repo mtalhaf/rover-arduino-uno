@@ -9,7 +9,6 @@
 #include "constants.h"
 #include "movement.h"
 #include "motor.h"
-//#include "lcd.h"
 #include "ultrasonic.h"
 #include "Wire.h"
 #include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
