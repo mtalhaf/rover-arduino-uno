@@ -50,5 +50,5 @@ void moveInAllDirections(){
 }
 
 void loop() {
-  //moveRoverAround();
+  moveRoverAround();
 }
