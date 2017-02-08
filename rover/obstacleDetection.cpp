@@ -1,19 +1,20 @@
 /*
- * obstacle avoidance detection and aviodance funtions 
+ * Obstacle Detection class implementation
  */
  
-#include "lcd.h"
-#include "ultrasonic.h"
-#include "movement.h"
+#include "obstacleDetection.h"
 
+/*
+ * Start of Obstacle Detection class
+ */
+
+ObstacleDetection::ObstacleDetection(Movement& movement, Ultrasonic& ultrasonic): movement(movement), ultrasonic(ultrasonic){}
+ 
 /*
  * detects obstacles in the rovers path 
  */
 
- Movement movement;
- Ultrasonic ultrasonic(ultrasonic_front_trigger_pin, ultrasonic_back_echo_pin);
-
-boolean detectObstacles(){
+boolean ObstacleDetection::detectObstacles(){
 
   long distanceToObject; // distance to the detected object
   
@@ -38,7 +39,7 @@ boolean detectObstacles(){
     
 }
 
-void avoidObstacle(){
+void ObstacleDetection::avoidObstacle(){
 
   int turnDirection = random(1,3); // initialise random turn to take left/ right
   int roverDirection = random(1,3); // initialise random direction to take forward/ back
