@@ -12,7 +12,7 @@
 #include "movement.h"
 
 void setup() {
-  init(); // from init.h
+  initialise(); // from init.h
 }
 
 /*
@@ -50,5 +50,5 @@ void moveInAllDirections(){
 }
 
 void loop() {
-  moveRoverAround();
+  //moveRoverAround();
 }

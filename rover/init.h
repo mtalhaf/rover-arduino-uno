@@ -11,7 +11,9 @@
 #include "Movement.h"
 #include "Ultrasonic.h"
 #include "ObstacleDetection.h"
-#include "lcd.h"
+//#include "lcd.h"
+#include "Wire.h"
+#include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
 
 
 Motor* motorA;
@@ -19,6 +21,7 @@ Motor* motorB;
 Ultrasonic* ultrasonic;
 Movement* movement;
 ObstacleDetection* obstacleDetection;
+LiquidCrystal_I2C* lcd;
 
 
 
@@ -39,7 +42,7 @@ void setUpSensorObjects(){
 
 void setUpFunctionalObjects(){
   movement = new Movement(motorA, motorB);
-  obstacleDetection = new ObstacleDetection(movement, ultrasonic);
+  obstacleDetection = new ObstacleDetection(movement, ultrasonic, lcd);
 }
 
 /*
@@ -73,12 +76,13 @@ void setUpUltraSonicRangeFinderPins() {
  */
 
 void setUpLCD() {
-  
-  lcd.begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
-  lcd.setCursor(0,0); //Start at character 0 on line 0
+  lcd = new LiquidCrystal_I2C(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
+  lcd->begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
+  lcd->setCursor(0,0); //Start at character 0 on line 0
+  lcd->print("hello");
 }
 
-void init(){
+void initialise(){
   setUpMotorPins(); //sets up all the motor pins
   setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
   setUpLCD(); //sets up the LCD

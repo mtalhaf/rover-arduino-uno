@@ -9,8 +9,11 @@
 #include "constants.h"
 #include "movement.h"
 #include "motor.h"
-#include "lcd.h"
+//#include "lcd.h"
 #include "ultrasonic.h"
+#include "Wire.h"
+#include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
+
 
 /*
  * Start of obstacle detection class
@@ -21,10 +24,11 @@ class ObstacleDetection{
   private:
     Movement* movement; // movement object
     Ultrasonic* ultrasonic; // ultrasonic object
+    LiquidCrystal_I2C* lcd; // lcd object
 
   // public methods for movement
   public:
-    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic); // initialises Obstacle detection class
+    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd); // initialises Obstacle detection class
     boolean detectObstacles(); // detects obstacles
     void avoidObstacle(); // avoids obstacles
 
