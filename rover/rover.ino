@@ -8,6 +8,7 @@
  */
 
 #include "obstacle.h"
+#include "motor.h"
 
 /*
  * Sets up motor pins in the main setup function
@@ -19,6 +20,9 @@
  * its a dedicated output PWM pin.
  */
 
+Motor motorA(motorA_dir_pin, motorA_brake_pin, motorA_speed_pin);
+Motor motorB(motorB_dir_pin, motorB_brake_pin, motorB_speed_pin);
+//Movement movement;
 
 void setUpMotorPins() {
   
@@ -74,7 +78,7 @@ void setup() {
  */
 void moveRoverAround(){
 
-  moveForward(ROVER_SPEED);
+  movement.moveForward(ROVER_SPEED);
   
   if (detectObstacles()) //if obstacles are detected in front of the rover
     avoidObstacle(); //avoid the obstacles
@@ -86,21 +90,21 @@ void moveRoverAround(){
 
 void moveInAllDirections(){
    // moves the robot forward
-  moveForward(ROVER_SPEED);
+  movement.moveForward(ROVER_SPEED);
   delay(1000);
   
-  moveBackward(ROVER_SPEED);
+  movement.moveBackward(ROVER_SPEED);
   delay(1000);
   
-  turnLeft(ROVER_SPEED, 1000);
+  movement.turnLeftForward(ROVER_SPEED, 1000);
 
-  turnLeftBack(ROVER_SPEED, 1000);
+  movement.turnLeftBack(ROVER_SPEED, 1000);
   
-  turnRight(ROVER_SPEED, 1000);
+  movement.turnRightForward(ROVER_SPEED, 1000);
   
-  turnRightBack(ROVER_SPEED, 1000);
+  movement.turnRightBack(ROVER_SPEED, 1000);
   
-  stopRoverMotors();
+  movement.stopRoverMotors();
 }
 
 void loop() {

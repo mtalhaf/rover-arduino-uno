@@ -10,6 +10,8 @@
  * detects obstacles in the rovers path 
  */
 
+ Movement movement;
+
 boolean detectObstacles(){
 
   long distanceToObject; // distance to the detected object
@@ -43,7 +45,7 @@ void avoidObstacle(){
   
   // if obstacle is still there keep turning the rover
   while(obstacle){
-    turnRover(ROVER_SPEED, roverDirection, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
+    movement.turnRover(ROVER_SPEED, roverDirection, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
     obstacle = detectObstacles();
   }
   
