@@ -54,6 +54,7 @@ void Movement::moveBackward(int roverSpeed){
 
 /*
  * Turns the rover in the specified direction
+ * for a specific amount of time
  * 
  * The rover turns by speeding up 1 motor
  * and braking/ stopping the other. This gives a 
@@ -81,8 +82,20 @@ void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn, int 
   }
 
   delay(turnDelay); // delays the turn of the rover by the turn delay, this is needed to make sure that the rover stops after turning
-  stopRoverMotors(); // stops the rover from moving
   
+}
+
+/*
+ * Turns the rover in the specified direction
+ * 
+ * The rover turns by speeding up 1 motor
+ * and braking/ stopping the other. This gives a 
+ * turning effect which turns the rover.
+ * 
+ * After the delay the motors are also stopped.
+ */
+void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn){
+  turnRover(roverSpeed, roverDirection, roverTurn, 0);
 }
 
 

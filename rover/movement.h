@@ -34,7 +34,8 @@ class Movement{
     void moveForward(int roverSpeed); // moves the rover forward
     void moveBackward(int roverSpeed); // moves the rover backward
     
-    void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay); // turns the rover in a specific direction and turn
+    void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay); // turns the rover in a specific direction and turn for a specific amount of time
+    void turnRover(int roverSpeed, int roverDirection, int roverTurn); // keeps turning the rover in a specific direction and turn 
     void turnLeftForward(int roverSpeed, int turnDelay); // turns the rover left forward
     void turnRightForward(int roverSpeed, int turnDelay); // turns the rover right forward
     void turnLeftBack(int roverSpeed, int turnDelay); // turns the rover left backwards
