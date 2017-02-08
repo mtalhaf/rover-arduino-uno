@@ -11,13 +11,14 @@
  */
 
  Movement movement;
+ Ultrasonic ultrasonic(ultrasonic_front_trigger_pin, ultrasonic_back_echo_pin);
 
 boolean detectObstacles(){
 
   long distanceToObject; // distance to the detected object
   
-  echoUltraSonic(); //echos the ultra sonic to check for obstacles
-  distanceToObject = getDistance();
+  ultrasonic.echoUltraSonic(); //echos the ultra sonic to check for obstacles
+  distanceToObject = ultrasonic.getDistance();
 
   /*
    * prints out the distance to the nearest object

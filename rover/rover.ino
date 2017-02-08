@@ -9,6 +9,8 @@
 
 #include "obstacle.h"
 #include "motor.h"
+#include "movement.h"
+#include "ultrasonic.h"
 
 /*
  * Sets up motor pins in the main setup function
@@ -22,6 +24,8 @@
 
 Motor motorA(motorA_dir_pin, motorA_brake_pin, motorA_speed_pin);
 Motor motorB(motorB_dir_pin, motorB_brake_pin, motorB_speed_pin);
+//Ultrasonic ultrasonic(ultrasonic_trigger_pin, ultrasonic_echo_pin);
+
 //Movement movement;
 
 void setUpMotorPins() {
@@ -43,9 +47,10 @@ void setUpMotorPins() {
  */
 
 void setUpUltraSonicRangeFinderPins() {
-  
-  pinMode(ultrasonic_trigger_pin, OUTPUT); //set ultrasonic trigger pin to output
-  pinMode(ultrasonic_echo_pin, INPUT); //set ultrasonic echo pin to output
+  //pinMode(ultrasonic_trigger_pin, OUTPUT); //set ultrasonic trigger pin to output
+  // pinMode(ultrasonic_echo_pin, INPUT); //set ultrasonic echo pin to output
+
+  ultrasonic.setUp();
   
 }
 
