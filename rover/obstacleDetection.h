@@ -24,10 +24,11 @@ class ObstacleDetection{
     Movement* movement; // movement object
     Ultrasonic* ultrasonic; // ultrasonic object
     LiquidCrystal_I2C* lcd; // lcd object
+    boolean displayOnLcd;
 
   // public methods for movement
   public:
-    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd); // initialises Obstacle detection class
+    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd); // initialises Obstacle detection class
     boolean detectObstacles(); // detects obstacles
     void avoidObstacle(); // avoids obstacles
 

@@ -42,7 +42,7 @@ void setUpSensorObjects(){
 
 void setUpFunctionalObjects(){
   movement = new Movement(motorA, motorB);
-  obstacleDetection = new ObstacleDetection(movement, ultrasonic, lcd);
+  obstacleDetection = new ObstacleDetection(movement, ultrasonic, lcd, false);
 }
 
 /*
@@ -87,6 +87,8 @@ void setUpLCD() {
   lcd->begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
   lcd->setCursor(0,0); //Start at character 0 on line 0
   lcd->print("hello");
+  lcd->setCursor(0,1); //Start at character 0 on line 1
+  lcd->print("I am your rover");
 }
 
 void initialise(){

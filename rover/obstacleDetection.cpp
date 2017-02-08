@@ -8,7 +8,9 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){}
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+  this->displayOnLcd = displayOnLcd;
+}
  
 /*
  * detects obstacles in the rovers path 
@@ -24,12 +26,14 @@ boolean ObstacleDetection::detectObstacles(){
   /*
    * prints out the distance to the nearest object
    */
-  
-  lcd->clear();
-  lcd->setCursor(0,0);
-  lcd->print("distance:");
-  lcd->setCursor(0,1);
-  lcd->print(distanceToObject, DEC);
+
+  if (displayOnLcd){
+    lcd->clear();
+    lcd->setCursor(0,0);
+    lcd->print("distance:");
+    lcd->setCursor(0,1);
+    lcd->print(distanceToObject, DEC);
+  }
 
   if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
     return true;
