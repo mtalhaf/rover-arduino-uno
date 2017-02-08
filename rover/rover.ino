@@ -22,12 +22,14 @@
 
 void setUpMotorPins() {
   
-  pinMode(motorA_dir_pin, OUTPUT); //set motor A direction pin to output
-  pinMode(motorA_brake_pin, OUTPUT); //set motor A brake pin to output
+  //pinMode(motorA_dir_pin, OUTPUT); //set motor A direction pin to output
+  //pinMode(motorA_brake_pin, OUTPUT); //set motor A brake pin to output
 
-  pinMode(motorB_dir_pin, OUTPUT); //set motor B direction pin to output
-  pinMode(motorB_brake_pin, OUTPUT); //set motor B brake pin to output
-  
+  //pinMode(motorB_dir_pin, OUTPUT); //set motor B direction pin to output
+  //pinMode(motorB_brake_pin, OUTPUT); //set motor B brake pin to output
+
+  motorA.setUp(); // sets up motor A pins
+  motorB.setUp(); // sets up motor B pins
 }
 
 /*
