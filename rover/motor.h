@@ -1,87 +1,32 @@
 /*
- * Motor A and B pin outputs are set here as easy functions
+ * Motor class definition
  */
 
-#include "constants.h"
+#ifndef motor_h
+#define motor_h
+
+#include "Arduino.h"
 
 /*
- * Functions for Motor A
- */
-void motorA_Forward(){
-    digitalWrite(motorA_dir_pin, LOW);// this is set to LOW because this makes the rover goes forward
-}
-
-void motorA_Stop(){
-    digitalWrite(motorA_brake_pin, HIGH); // stops the motor/ applys the brake
-}
-
-void motorA_Backward(){
-    digitalWrite(motorA_dir_pin, HIGH);// this is set to HIGH because this makes the rover goes backwards
-}
-
-void motorA_DisengageBrakes(){
-    digitalWrite(motorA_brake_pin, LOW); // starts the motor/ disengages the brakes
-}
-
-void motorA_Speed(int motorSpeed){
-  analogWrite(motorA_speed_pin, motorSpeed); // sets motor A speed
-}
-
-
-/*
- * Functions for Motor B
- */
-void motorB_Forward(){
-    digitalWrite(motorB_dir_pin, HIGH);// this is set to HIGH because this makes the rover goes forward
-}
-
-void motorB_Stop(){
-    digitalWrite(motorB_brake_pin, HIGH); // stops the motor/ applys the brake
-}
-
-void motorB_Backward(){
-    digitalWrite(motorB_dir_pin, LOW);// this is set to LOW because this makes the rover goes backwards
-}
-
-void motorB_DisengageBrakes(){
-    digitalWrite(motorB_brake_pin, LOW); // starts the motor/ disengages the brakes
-}
-
-void motorB_Speed(int motorSpeed){
-  analogWrite(motorB_speed_pin, motorSpeed); // sets motorB speed
-}
-
-/*
- * Functions for Motor A & Motor B both
+ * Start of motor class
  */
 
-// moves the rover forward
-void roverMotorsForward(){
-  motorA_Forward();
-  motorB_Forward();
-}
+class Motor{
 
-// moves the rover backward
-void roverMotorsBackward(){
-  motorA_Backward();
-  motorB_Backward();
-}
+  // private motor variables
+  private:
+    int motor_dir_pin;   //motor direction pin
+    int motor_brake_pin; //motor brake pin
+    int motor_speed_pin; //motor speed pin
 
-// starts both rover motors to move the rover
-void disengageRoverBrakes(){
-  motorA_DisengageBrakes();
-  motorB_DisengageBrakes();
-}
-
-// stops both rover motors
-void stopRoverMotors(){
-  motorA_Stop();
-  motorB_Stop();
-}
-
-// sets the rover speed
-void setRoverSpeed(int roverSpeed){
-  motorA_Speed(roverSpeed);
-  motorB_Speed(roverSpeed);
-}
-
+  // public methods for motor
+  public:
+    Motor(int motorDirPin, int motorBrakePin, int motorSpeedPin); // initialises the motor
+    void setUp(); // sets up the motor
+    void moveForward();  // moves the motor forward
+    void moveBackward(); // moves the motor backward
+    void disengageBrake(); // disengages the brakes
+    void stopMotor(); // stops the motor
+    void motorSpeed(int motorSpeed); // sets the motor speed
+};
+#endif

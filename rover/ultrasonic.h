@@ -1,53 +1,36 @@
 /*
- * Ultrasonic pin output and inputs are set here for easy access
+ * Ultrasonic class definition
  */
 
+#ifndef ultrasonic_h
+#define ultrasonic_h
+
+#include "Arduino.h"
 #include "constants.h"
-
- void echoOn(){
-    digitalWrite(ultrasonic_trigger_pin, HIGH); //turns the echo on
- }
-
-  void echoOff(){
-    digitalWrite(ultrasonic_trigger_pin, LOW); //turns the echo off
- }
-
- long getEchoPulse(){
-   return pulseIn(ultrasonic_echo_pin, HIGH);
- }
+#include "movement.h"
+#include "motor.h"
 
 /*
- * Turns the echo on and off in order to
- * send ultrasonic waves and recieve them
-*/
-
-void echoUltraSonic(){
-
-  //turns the ultrasonic off for 2 microseconds
-  echoOff(); 
-  delayMicroseconds(2); 
-
-  //echos for 10 microseconds
-  echoOn();
-  delayMicroseconds(10); 
-
-  //turns the ultrasonic off again
-  echoOff();
-  
-}
-
-/*
- * gets the distance in cm determined by the ultrasonic
+ * Start of ultrasonic class
  */
+class Ultrasonic{
 
-long getDistance(){
+  // private movement variables
+  private:
+    int ultrasonic_trigger_pin; // ultrasonic trigger pin
+    int ultrasonic_echo_pin; // ultrasonic echo pin
+    void echoOn(); // starts echo ultrasonic waves
+    void echoOff(); // stops echo ultrasonic waves
+    long getEchoPulse(); // reads the echo pulse from the ultrasonic sensor
 
-  long distance, duration; //initialises the duration and distance variable
-  
-  duration = getEchoPulse(); // get the duration it took for the ultrasonic waves to return
-  distance = duration/58.2; // calculates the distance based on speed of the waves
+  // public methods for movement
+  public:
+    Ultrasonic(int ultrasonicTriggerPin, int ultrasonicEchoPin); // initialises the ultrasonic sensor
+    void setUp(); // sets Up the ultrasonic sensor
+    void echoUltraSonic(); // echos the ultrasonic for a short time
+    long getDistance(); // gets the distance from the object infront of the sensor
 
-  return distance; // returns the distance in cm
-  
-}
+};
+ 
+#endif
 
