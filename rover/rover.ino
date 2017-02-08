@@ -19,6 +19,7 @@
  * its a dedicated output PWM pin.
  */
 
+
 void setUpMotorPins() {
   
   pinMode(motorA_dir_pin, OUTPUT); //set motor A direction pin to output
@@ -42,11 +43,28 @@ void setUpUltraSonicRangeFinderPins() {
   
 }
 
+/*
+ * Sets up LCD for printing, prints out welcome message
+ */
+
+void setUpLCD() {
+  
+  lcd.begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
+
+  lcd.setCursor(0,0); //Start at character 0 on line 0
+  lcd.print("Hello!");
+  lcd.setCursor(0,1);
+  lcd.print("I am your rover");
+  lcd.setCursor(0,0); //Start at character 0 on line 0
+  
+}
+
 void setup() {
 
   setUpMotorPins(); //sets up all the motor pins
   setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
-
+  setUpLCD(); //sets up the LCD
+  
 }
 
 /*

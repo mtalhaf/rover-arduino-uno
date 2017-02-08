@@ -1,7 +1,8 @@
 /*
  * obstacle avoidance detection and aviodance funtions 
  */
-
+ 
+#include "lcd.h"
 #include "ultrasonic.h"
 #include "movement.h"
 
@@ -16,10 +17,21 @@ boolean detectObstacles(){
   echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = getDistance();
 
-  if (distanceToObject <= OBSTACLE_DETECTION_DISTANCE)
+  /*
+   * prints out the distance to the nearest object
+   */
+  
+  lcd.clear(); 
+  lcd.setCursor(0,0);
+  lcd.print("distance:");
+  lcd.setCursor(0,1);
+  lcd.print(distanceToObject, DEC);
+
+  if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
     return true;
-  else
+  }else{
     return false;
+  }
     
 }
 
