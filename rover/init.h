@@ -17,7 +17,7 @@
 
 Motor* motorA;
 Motor* motorB;
-Ultrasonic* ultrasonic;
+Ultrasonic* ultrasonicFront;
 Ultrasonic* ultrasonicFrontEdge;
 Movement* movement;
 ObstacleDetection* obstacleDetection;
@@ -33,7 +33,7 @@ LiquidCrystal_I2C* lcd;
 void setUpSensorObjects(){
   motorA = new Motor(motorA_dir_pin, motorA_brake_pin, motorA_speed_pin);
   motorB = new Motor(motorB_dir_pin, motorB_brake_pin, motorB_speed_pin);
-  ultrasonic = new Ultrasonic(ultrasonic_front_trigger_pin, ultrasonic_front_echo_pin);
+  ultrasonicFront = new Ultrasonic(ultrasonic_front_trigger_pin, ultrasonic_front_echo_pin);
   ultrasonicFrontEdge = new Ultrasonic(ultrasonic_front_edge_trigger_pin, ultrasonic_front_edge_echo_pin);
   lcd = new LiquidCrystal_I2C(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
 }
@@ -45,7 +45,7 @@ void setUpSensorObjects(){
 
 void setUpFunctionalObjects(){
   movement = new Movement(motorA, motorB);
-  obstacleDetection = new ObstacleDetection(movement, ultrasonic, lcd, false);
+  obstacleDetection = new ObstacleDetection(movement, ultrasonicFront, lcd, false);
   frontEdgeObstacleDetection = new ObstacleDetection(movement, ultrasonicFrontEdge, lcd, true);
 }
 
@@ -80,7 +80,7 @@ void setUpMotorPins() {
  */
 
 void setUpUltraSonicRangeFinderPins() {
-  ultrasonic->setUp();
+  ultrasonicFront->setUp();
   ultrasonicFrontEdge->setUp();
 }
 
