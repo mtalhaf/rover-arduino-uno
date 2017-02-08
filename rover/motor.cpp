@@ -2,7 +2,6 @@
  * Motor class implementation
  */
 
-#include "Arduino.h"
 #include "motor.h"
 
 /*
