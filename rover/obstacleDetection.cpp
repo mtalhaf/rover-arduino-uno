@@ -8,7 +8,7 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement& movement, Ultrasonic& ultrasonic): movement(movement), ultrasonic(ultrasonic){}
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic): movement(movement), ultrasonic(ultrasonic){}
  
 /*
  * detects obstacles in the rovers path 

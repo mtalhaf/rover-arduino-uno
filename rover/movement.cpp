@@ -9,7 +9,7 @@
  */
 
 // Constructor implementation
-Movement::Movement(void) : motorA(motorA_dir_pin, motorA_brake_pin, motorA_speed_pin), motorB(motorB_dir_pin, motorB_brake_pin, motorB_speed_pin){}
+Movement::Movement(Motor motorA, Motor motorB) : motorA(&motorA), motorB(&motorB){}
 
 /*
  * Moves the rover in the specified direction

@@ -24,7 +24,7 @@ class ObstacleDetection{
 
   // public methods for movement
   public:
-    ObstacleDetection(Movement& movement, Ultrasonic& ultrasonic); // initialises Obstacle detection class
+    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic); // initialises Obstacle detection class
     boolean detectObstacles(); // detects obstacles
     void avoidObstacle(); // avoids obstacles
 

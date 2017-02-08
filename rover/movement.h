@@ -17,12 +17,12 @@ class Movement{
   
   // private movement variables
   private:
-    Motor motorA;   // motorA definition
-    Motor motorB; // motorB definition
+    Motor* motorA;   // motorA definition
+    Motor* motorB; // motorB definition
 
   // public methods for movement
   public:
-    Movement(void); // initialises the momovement object
+    Movement(Motor motorA, Motor motorB); // initialises the momovement object
     
     void roverMotorsForward(); // moves the rover forward
     void roverMotorsBackward(); // moves the rover backward
