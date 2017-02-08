@@ -53,8 +53,8 @@ void setUpFunctionalObjects(){
  */
 
 void setUpMotorPins() {
-  motorA.setUp(); // sets up motor A pins
-  motorB.setUp(); // sets up motor B pins
+  motorA->setUp(); // sets up motor A pins
+  motorB->setUp(); // sets up motor B pins
 }
 
 
@@ -65,7 +65,7 @@ void setUpMotorPins() {
  */
 
 void setUpUltraSonicRangeFinderPins() {
-  ultrasonic.setUp();
+  ultrasonic->setUp();
 }
 
 /*

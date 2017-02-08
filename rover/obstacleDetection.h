@@ -19,8 +19,8 @@ class ObstacleDetection{
 
   // private movement variables
   private:
-    Movement movement; // movement object
-    Ultrasonic ultrasonic; // ultrasonic object
+    Movement* movement; // movement object
+    Ultrasonic* ultrasonic; // ultrasonic object
 
   // public methods for movement
   public:

@@ -9,7 +9,7 @@
  */
 
 // Constructor implementation
-Movement::Movement(Motor motorA, Motor motorB) : motorA(&motorA), motorB(&motorB){}
+Movement::Movement(Motor* motorA, Motor* motorB) : motorA(motorA), motorB(motorB){}
 
 /*
  * Moves the rover in the specified direction
@@ -66,17 +66,17 @@ void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn, int 
   // switchs which way to turn the rover in
   switch(roverTurn){    
     case ROVER_TURN_LEFT:
-      motorB.stopMotor(); // stops motor B
-      roverDirection == ROVER_FORWARD_DIRECTION ? motorA.moveForward() : motorA.moveBackward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
-      motorA.disengageBrake(); // disengages motor A brakes so it can move
-      motorA.motorSpeed(roverSpeed); // sets motor A speed and starts it
+      motorB->stopMotor(); // stops motor B
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorA->moveForward() : motorA->moveBackward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
+      motorA->disengageBrake(); // disengages motor A brakes so it can move
+      motorA->motorSpeed(roverSpeed); // sets motor A speed and starts it
     break;
     
     case ROVER_TURN_RIGHT:
-      motorA.stopMotor(); // stops motor A
-      roverDirection == ROVER_FORWARD_DIRECTION ? motorB.moveForward() : motorB.moveBackward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
-      motorA.disengageBrake(); // disengages motor B brakes so it can move
-      motorB.motorSpeed(roverSpeed); // sets motor B speed and starts it
+      motorA->stopMotor(); // stops motor A
+      roverDirection == ROVER_FORWARD_DIRECTION ? motorB->moveForward() : motorB->moveBackward(); // uses inline if else to decide to move the motor forward or backward based on the parameter
+      motorA->disengageBrake(); // disengages motor B brakes so it can move
+      motorB->motorSpeed(roverSpeed); // sets motor B speed and starts it
     break;
   }
 
@@ -120,31 +120,31 @@ void Movement::turnRightBack(int roverSpeed, int turnDelay){
 
 // moves the rover forward
 void Movement::roverMotorsForward(){
-  motorA.moveForward();
-  motorB.moveForward();
+  motorA->moveForward();
+  motorB->moveForward();
 }
 
 // moves the rover backward
 void Movement::roverMotorsBackward(){
-  motorA.moveBackward();
-  motorB.moveBackward();
+  motorA->moveBackward();
+  motorB->moveBackward();
 }
 
 // starts both rover motors to move the rover
 void Movement::disengageRoverBrakes(){
-  motorA.disengageBrake();
-  motorB.disengageBrake();
+  motorA->disengageBrake();
+  motorB->disengageBrake();
 }
 
 // stops both rover motors
 void Movement::stopRoverMotors(){
-  motorA.stopMotor();
-  motorB.stopMotor();
+  motorA->stopMotor();
+  motorB->stopMotor();
 }
 
 // sets the rover speed
 void Movement::setRoverSpeed(int roverSpeed){
-  motorA.motorSpeed(roverSpeed);
-  motorB.motorSpeed(roverSpeed);
+  motorA->motorSpeed(roverSpeed);
+  motorB->motorSpeed(roverSpeed);
 }
 

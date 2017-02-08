@@ -8,7 +8,7 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic): movement(movement), ultrasonic(ultrasonic){}
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic) : movement(movement), ultrasonic(ultrasonic){}
  
 /*
  * detects obstacles in the rovers path 
@@ -18,8 +18,8 @@ boolean ObstacleDetection::detectObstacles(){
 
   long distanceToObject; // distance to the detected object
   
-  ultrasonic.echoUltraSonic(); //echos the ultra sonic to check for obstacles
-  distanceToObject = ultrasonic.getDistance();
+  ultrasonic->echoUltraSonic(); //echos the ultra sonic to check for obstacles
+  distanceToObject = ultrasonic->getDistance();
 
   /*
    * prints out the distance to the nearest object
@@ -47,7 +47,7 @@ void ObstacleDetection::avoidObstacle(){
   
   // if obstacle is still there keep turning the rover
   while(obstacle){
-    movement.turnRover(ROVER_SPEED, roverDirection, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
+    movement->turnRover(ROVER_SPEED, roverDirection, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
     obstacle = detectObstacles();
   }
   

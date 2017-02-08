@@ -20,10 +20,10 @@ void setup() {
  */
 void moveRoverAround(){
 
-  movement.moveForward(ROVER_SPEED);
+  movement->moveForward(ROVER_SPEED);
   
-  if (obstacleDetection.detectObstacles()) //if obstacles are detected in front of the rover
-    obstacleDetection.avoidObstacle(); //avoid the obstacles
+  if (obstacleDetection->detectObstacles()) //if obstacles are detected in front of the rover
+    obstacleDetection->avoidObstacle(); //avoid the obstacles
 }
 
 /*
@@ -32,21 +32,21 @@ void moveRoverAround(){
 
 void moveInAllDirections(){
    // moves the robot forward
-  movement.moveForward(ROVER_SPEED);
+  movement->moveForward(ROVER_SPEED);
   delay(1000);
   
-  movement.moveBackward(ROVER_SPEED);
+  movement->moveBackward(ROVER_SPEED);
   delay(1000);
   
-  movement.turnLeftForward(ROVER_SPEED, 1000);
+  movement->turnLeftForward(ROVER_SPEED, 1000);
 
-  movement.turnLeftBack(ROVER_SPEED, 1000);
+  movement->turnLeftBack(ROVER_SPEED, 1000);
   
-  movement.turnRightForward(ROVER_SPEED, 1000);
+  movement->turnRightForward(ROVER_SPEED, 1000);
   
-  movement.turnRightBack(ROVER_SPEED, 1000);
+  movement->turnRightBack(ROVER_SPEED, 1000);
   
-  movement.stopRoverMotors();
+  movement->stopRoverMotors();
 }
 
 void loop() {

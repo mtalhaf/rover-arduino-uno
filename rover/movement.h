@@ -22,7 +22,7 @@ class Movement{
 
   // public methods for movement
   public:
-    Movement(Motor motorA, Motor motorB); // initialises the momovement object
+    Movement(Motor* motorA, Motor* motorB); // initialises the momovement object
     
     void roverMotorsForward(); // moves the rover forward
     void roverMotorsBackward(); // moves the rover backward
