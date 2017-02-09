@@ -8,8 +8,18 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
   this->displayOnLcd = displayOnLcd;
+  this->distanceThreshold = distanceThreshold;
+  this->thresholdBounds = 0;
+  this->forObstacleDetection = true;
+}
+
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold, int thresholdBounds) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+  this->displayOnLcd = displayOnLcd;
+  this->distanceThreshold = distanceThreshold;
+  this->thresholdBounds = thresholdBounds;
+  this->forObstacleDetection = false;
 }
  
 /*
