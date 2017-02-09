@@ -23,13 +23,13 @@ void Motor::setUp(){
   pinMode(motor_brake_pin, OUTPUT); //set motor B brake pin to output
 }
 
-// Move motor forward
-void Motor::moveForward(){
+// Set forward direction for motor
+void Motor::setForwardDirection(){
   digitalWrite(motor_dir_pin, HIGH);
 }
 
-// Moves motor backward
-void Motor::moveBackward(){
+// Set backward direction for motor
+void Motor::setBackwardDirection(){
     digitalWrite(motor_dir_pin, LOW);
 }
 
@@ -43,7 +43,7 @@ void Motor::stopMotor(){
   digitalWrite(motor_brake_pin, HIGH);
 }
 
-// Sets the speed of the motor
-void Motor::motorSpeed(int motorSpeed){
+// Moves the motor with the given speed
+void Motor::moveMotor(int motorSpeed){
   analogWrite(motor_speed_pin, motorSpeed);
 }

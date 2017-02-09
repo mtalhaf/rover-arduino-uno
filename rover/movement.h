@@ -28,7 +28,7 @@ class Movement{
     void roverMotorsBackward(); // moves the rover backward
     void disengageRoverBrakes(); // disengages the rover brakes
     void stopRoverMotors(); // stops the rover
-    void setRoverSpeed(int roverSpeed); // sets the rover speed
+    void moveRover(int roverSpeed); // sets the rover speed
     
     void moveRover(int roverSpeed, int roverDirection); // moves the rover in a specific direction
     void moveForward(int roverSpeed); // moves the rover forward
