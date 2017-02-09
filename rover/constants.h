@@ -28,5 +28,6 @@
 #define ROVER_SPEED 255 //rover speed settings
 
 #define OBSTACLE_DETECTION_DISTANCE 25 //maximum distance between rover and an obstacle in cm
+#define EDGE_DETECTION_DISTANCE 7 //maximum distance between rover and an obstacle in cm
 
 #endif
