@@ -65,6 +65,6 @@ void moveInAllDirections(){
 }
 
 void loop() {
-  //moveRoverAround();
-  shyRover();
+  moveRoverAround();
+  //shyRover();
 }
