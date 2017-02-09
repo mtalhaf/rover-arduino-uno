@@ -68,9 +68,10 @@ void ObstacleDetection::avoidObstacle(){
 
   //moves the rover backward imediately if an edge is detected
   if (!forObstacleDetection && obstacle){
-    movement->roverMotorsBackward();
-    delay(100);
-    movement->stopRoverMotors();
+    movement->roverMotorsBackward(); // turn robot direction backwards
+    movement->moveRover(255); // set the rover speed to full to make sure it goes back faster
+    delay(100); // move back for 100 milli seconds
+    movement->stopRoverMotors(); // stop the rover
   }
   // if obstacle is still there keep turning the rover
   while(obstacle){
