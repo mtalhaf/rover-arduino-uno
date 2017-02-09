@@ -29,6 +29,8 @@ ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic,
 boolean ObstacleDetection::detectObstacles(){
 
   long distanceToObject; // distance to the detected object
+  long maxThreshold = distanceThreshold + thresholdBounds; // maximum ThresholdBound
+  long minThreshold = distanceThreshold - thresholdBounds; // minimum THresholdBound
   
   ultrasonic->echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = ultrasonic->getDistance();
@@ -45,10 +47,16 @@ boolean ObstacleDetection::detectObstacles(){
     lcd->print(distanceToObject, DEC);
   }
 
-  if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
-    return true;
+  if (forObstacleDetection){
+    if (distanceToObject > 0 && distanceToObject <= distanceThreshold)
+      return true;
+    else
+      return false;
   }else{
-    return false;
+    if (distanceToObject >= 0 && distanceToObject <= minThreshold && distanceToObject >= maxThreshold)
+      return true;
+    else
+      return false;
   }
     
 }
