@@ -11,15 +11,6 @@
 ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
   this->displayOnLcd = displayOnLcd;
   this->distanceThreshold = distanceThreshold;
-  this->thresholdBounds = 0;
-  this->forObstacleDetection = true;
-}
-
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold, int thresholdBounds) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
-  this->displayOnLcd = displayOnLcd;
-  this->distanceThreshold = distanceThreshold;
-  this->thresholdBounds = thresholdBounds;
-  this->forObstacleDetection = false;
 }
  
 /*
@@ -29,8 +20,6 @@ ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic,
 boolean ObstacleDetection::detectObstacles(){
 
   long distanceToObject; // distance to the detected object
-  long maxThreshold = distanceThreshold + thresholdBounds; // maximum ThresholdBound
-  long minThreshold = distanceThreshold - thresholdBounds; // minimum THresholdBound
   
   ultrasonic->echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = ultrasonic->getDistance();
@@ -46,14 +35,9 @@ boolean ObstacleDetection::detectObstacles(){
     lcd->print(distanceToObject, DEC);
   }
 
-  if (forObstacleDetection){
-    if (distanceToObject > 0 && distanceToObject <= distanceThreshold)
-      return true;
-  }else{
-    if (distanceToObject >= 0 && distanceToObject >= minThreshold && distanceToObject >= maxThreshold){
-      return true;
-    }
-  }
+  if (distanceToObject > 0 && distanceToObject <= distanceThreshold)
+    return true;
+ 
 
   return false;
  
@@ -66,13 +50,6 @@ void ObstacleDetection::avoidObstacle(){
   boolean obstacle = detectObstacles(); // variable to see if obstacle is still in place
   boolean avoidedObtacle = false; // variable t check if an obstacle was avoided
 
-  //moves the rover backward imediately if an edge is detected
-  if (!forObstacleDetection && obstacle){
-    movement->roverMotorsBackward(); // turn robot direction backwards
-    movement->moveRover(255); // set the rover speed to full to make sure it goes back faster
-    delay(100); // move back for 100 milli seconds
-    movement->stopRoverMotors(); // stop the rover
-  }
   // if obstacle is still there keep turning the rover
   while(obstacle){
 
@@ -83,6 +60,7 @@ void ObstacleDetection::avoidObstacle(){
       lcd->setCursor(0,1);
       lcd->print("Avoiding");
     }
+    
     movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
     obstacle = detectObstacles();
     avoidedObtacle = true;

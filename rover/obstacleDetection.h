@@ -26,13 +26,10 @@ class ObstacleDetection{
     LiquidCrystal_I2C* lcd; // lcd object
     boolean displayOnLcd;
     int distanceThreshold;
-    int thresholdBounds;
-    boolean forObstacleDetection;
 
-  // public methods for movement
+  // public methods for obstacle detection
   public:
     ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold); // initialises Obstacle detection class
-    ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold, int thresholdBounds); // initialises Obstacle detection class with bounds for the threshold
     boolean detectObstacles(); // detects obstacles
     void avoidObstacle(); // avoids obstacles
 
