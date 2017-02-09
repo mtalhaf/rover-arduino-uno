@@ -25,8 +25,8 @@ void moveRoverAround(){
   if (obstacleDetection->detectObstacles()) //if obstacles are detected in front of the rover
     obstacleDetection->avoidObstacle(); //avoid the obstacles
     
-  if (frontEdgeObstacleDetection->detectObstacles()) //if edge are detected in front of the rover
-    frontEdgeObstacleDetection->avoidObstacle(); //avoid the edge
+  if (frontEdgeObstacleDetection->detectEdges()) //if edge are detected in front of the rover
+    frontEdgeObstacleDetection->avoidEdge(); //avoid the edge
 }
 
 /*
