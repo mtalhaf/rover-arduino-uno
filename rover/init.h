@@ -45,8 +45,8 @@ void setUpSensorObjects(){
 
 void setUpFunctionalObjects(){
   movement = new Movement(motorA, motorB);
-  obstacleDetection = new ObstacleDetection(movement, ultrasonicFront, lcd, false);
-  frontEdgeObstacleDetection = new ObstacleDetection(movement, ultrasonicFrontEdge, lcd, true);
+  obstacleDetection = new ObstacleDetection(movement, ultrasonicFront, lcd, true, OBSTACLE_DETECTION_DISTANCE);
+  frontEdgeObstacleDetection = new ObstacleDetection(movement, ultrasonicFrontEdge, lcd, false, EDGE_DETECTION_DISTANCE, 2);
 }
 
 /*
