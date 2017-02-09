@@ -23,10 +23,10 @@ class Motor{
   public:
     Motor(int motorDirPin, int motorBrakePin, int motorSpeedPin); // initialises the motor
     void setUp(); // sets up the motor
-    void moveForward();  // moves the motor forward
-    void moveBackward(); // moves the motor backward
+    void setForwardDirection();  // sets the motor to rotate in the forward direction
+    void setBackwardDirection(); // sets the motor to rotate in the backward direction
     void disengageBrake(); // disengages the brakes
     void stopMotor(); // stops the motor
-    void motorSpeed(int motorSpeed); // sets the motor speed
+    void moveMotor(int motorSpeed); // starts moving the motor with the given motor speed
 };
 #endif

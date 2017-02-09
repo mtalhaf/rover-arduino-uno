@@ -47,13 +47,25 @@ void ObstacleDetection::avoidObstacle(){
 
   int turnDirection = random(1,3); // initialise random turn to take left/ right
   int roverDirection = random(1,3); // initialise random direction to take forward/ back
-  boolean obstacle = true; // variable to see if obstacle is still in place
+  boolean obstacle = detectObstacles(); // variable to see if obstacle is still in place
+  boolean avoidedObtacle = false; // variable t check if an obstacle was avoided
   
   // if obstacle is still there keep turning the rover
   while(obstacle){
-    movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection, 2000); // turns the rover at full speed in the random turn and direction for 2 seconds
+
+    if (displayOnLcd){
+      lcd->clear();
+      lcd->setCursor(0,0);
+      lcd->print("Obstacle ahead");
+      lcd->setCursor(0,1);
+      lcd->print("Avoiding");
+    }
+    movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
     obstacle = detectObstacles();
+    avoidedObtacle = true;
   }
-  
+
+  if (avoidedObtacle)
+    movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection, 1000); // keeps the rover turning for 1 second to completely avoid the obstacle
 }
 

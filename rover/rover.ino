@@ -4,7 +4,7 @@
  The code is supposed to run on the Arduino UNO and is built for
  SOFT561 module as a project.
 
- VERSION: v0.1.6
+ VERSION: v0.1.8
  */
 
 #include "init.h"
@@ -24,6 +24,21 @@ void moveRoverAround(){
   
   if (obstacleDetection->detectObstacles()) //if obstacles are detected in front of the rover
     obstacleDetection->avoidObstacle(); //avoid the obstacles
+    
+  //frontEdgeObstacleDetection->detectObstacles();
+}
+
+/*
+ * moves the rover around its place and changes direction if an obstacle is presented
+ */
+void shyRover(){
+  
+  if (obstacleDetection->detectObstacles()) //if obstacles are detected in front of the rover
+    obstacleDetection->avoidObstacle(); //avoid the obstacles
+  else
+    movement->stopRoverMotors();
+    
+  //frontEdgeObstacleDetection->detectObstacles();
 }
 
 /*
@@ -50,5 +65,6 @@ void moveInAllDirections(){
 }
 
 void loop() {
-  moveRoverAround();
+  //moveRoverAround();
+  shyRover();
 }
