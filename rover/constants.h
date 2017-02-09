@@ -25,7 +25,7 @@
 #define ROVER_TURN_LEFT 1 //rover forward direction
 #define ROVER_TURN_RIGHT 2 //rover backward direction
 
-#define ROVER_SPEED 150 //rover speed settings
+#define ROVER_SPEED 130 //rover speed settings
 
 #define OBSTACLE_DETECTION_DISTANCE 25 //maximum distance between rover and an obstacle in cm
 #define EDGE_DETECTION_DISTANCE 7 //maximum distance between rover and and obstacle in cm
