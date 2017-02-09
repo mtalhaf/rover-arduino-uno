@@ -36,9 +36,8 @@ boolean ObstacleDetection::detectObstacles(){
   distanceToObject = ultrasonic->getDistance();
 
   /*
-   * prints out the distance to the nearest object
-   */
-
+  * prints out the distance to the nearest object
+  */
   if (displayOnLcd){
     lcd->clear();
     lcd->setCursor(0,0);
@@ -50,15 +49,14 @@ boolean ObstacleDetection::detectObstacles(){
   if (forObstacleDetection){
     if (distanceToObject > 0 && distanceToObject <= distanceThreshold)
       return true;
-    else
-      return false;
   }else{
-    if (distanceToObject >= 0 && distanceToObject <= minThreshold && distanceToObject >= maxThreshold)
+    if (distanceToObject >= 0 && distanceToObject >= minThreshold && distanceToObject >= maxThreshold){
       return true;
-    else
-      return false;
+    }
   }
-    
+
+  return false;
+ 
 }
 
 void ObstacleDetection::avoidObstacle(){
@@ -67,7 +65,13 @@ void ObstacleDetection::avoidObstacle(){
   int roverDirection = random(1,3); // initialise random direction to take forward/ back
   boolean obstacle = detectObstacles(); // variable to see if obstacle is still in place
   boolean avoidedObtacle = false; // variable t check if an obstacle was avoided
-  
+
+  //moves the rover backward imediately if an edge is detected
+  if (!forObstacleDetection && obstacle){
+    movement->roverMotorsBackward();
+    delay(100);
+    movement->stopRoverMotors();
+  }
   // if obstacle is still there keep turning the rover
   while(obstacle){
 
