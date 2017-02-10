@@ -8,8 +8,9 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
   this->displayOnLcd = displayOnLcd;
+  this->distanceThreshold = distanceThreshold;
 }
  
 /*
@@ -24,9 +25,8 @@ boolean ObstacleDetection::detectObstacles(){
   distanceToObject = ultrasonic->getDistance();
 
   /*
-   * prints out the distance to the nearest object
-   */
-
+  * prints out the distance to the nearest object
+  */
   if (displayOnLcd){
     lcd->clear();
     lcd->setCursor(0,0);
@@ -35,12 +35,12 @@ boolean ObstacleDetection::detectObstacles(){
     lcd->print(distanceToObject, DEC);
   }
 
-  if (distanceToObject > 0 && distanceToObject <= OBSTACLE_DETECTION_DISTANCE){
+  if (distanceToObject > 0 && distanceToObject <= distanceThreshold)
     return true;
-  }else{
-    return false;
-  }
-    
+ 
+
+  return false;
+ 
 }
 
 void ObstacleDetection::avoidObstacle(){
@@ -49,7 +49,7 @@ void ObstacleDetection::avoidObstacle(){
   int roverDirection = random(1,3); // initialise random direction to take forward/ back
   boolean obstacle = detectObstacles(); // variable to see if obstacle is still in place
   boolean avoidedObtacle = false; // variable t check if an obstacle was avoided
-  
+
   // if obstacle is still there keep turning the rover
   while(obstacle){
 
@@ -60,6 +60,7 @@ void ObstacleDetection::avoidObstacle(){
       lcd->setCursor(0,1);
       lcd->print("Avoiding");
     }
+    
     movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
     obstacle = detectObstacles();
     avoidedObtacle = true;

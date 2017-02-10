@@ -11,6 +11,7 @@
 #include "Movement.h"
 #include "Ultrasonic.h"
 #include "ObstacleDetection.h"
+#include "EdgeDetection.h"
 #include "Wire.h"
 #include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
 
@@ -21,7 +22,7 @@ Ultrasonic* ultrasonicFront;
 Ultrasonic* ultrasonicFrontEdge;
 Movement* movement;
 ObstacleDetection* obstacleDetection;
-ObstacleDetection* frontEdgeObstacleDetection;
+EdgeDetection* frontEdgeObstacleDetection;
 LiquidCrystal_I2C* lcd;
 
 
@@ -45,8 +46,8 @@ void setUpSensorObjects(){
 
 void setUpFunctionalObjects(){
   movement = new Movement(motorA, motorB);
-  obstacleDetection = new ObstacleDetection(movement, ultrasonicFront, lcd, false);
-  frontEdgeObstacleDetection = new ObstacleDetection(movement, ultrasonicFrontEdge, lcd, true);
+  obstacleDetection = new ObstacleDetection(movement, ultrasonicFront, lcd, false, OBSTACLE_DETECTION_DISTANCE);
+  frontEdgeObstacleDetection = new EdgeDetection(movement, ultrasonicFrontEdge, lcd, true, EDGE_DETECTION_DISTANCE, EDGE_DETECTION_DISTANCE_THRESHOLD);
 }
 
 /*
