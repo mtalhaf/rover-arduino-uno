@@ -66,6 +66,7 @@ void moveInAllDirections(){
 }
 
 void loop() {
-  moveRoverAround();
+  //moveRoverAround();
+  rosLoop();
   //shyRover();
 }
