@@ -13,6 +13,7 @@
 #include "ObstacleDetection.h"
 #include "EdgeDetection.h"
 #include "Wire.h"
+#include "rosInit.h"
 #include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
 
 
@@ -102,5 +103,6 @@ void initialise(){
   setUpMotorPins(); //sets up all the motor pins
   setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
   setUpLCD(); //sets up the LCD
+  rosSetup(); //sets up ros
 }
 #endif
