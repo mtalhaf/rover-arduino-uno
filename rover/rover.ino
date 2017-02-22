@@ -4,7 +4,7 @@
  The code is supposed to run on the Arduino UNO and is built for
  SOFT561 module as a project.
 
- VERSION: v0.1.8
+ VERSION: v0.1.9
  */
 
 #include "init.h"
