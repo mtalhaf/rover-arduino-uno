@@ -5,6 +5,8 @@
 #ifndef rosconstants_h
 #define rosconstants_h
 
-#define DISPLAY_ON_LCD "displayOnLcd" //Direction pin number for motor A
+
+const char TOPIC_DISPLAY_ON_LCD[] = "topic_displayOnLcd";  //topic to display on lcd
+
 
 #endif

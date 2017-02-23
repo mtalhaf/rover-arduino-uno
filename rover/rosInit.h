@@ -35,7 +35,7 @@ void displayOnLcd(const std_msgs::String message){
 
 
 
-ros::Subscriber<std_msgs::String> lcdSubscriber("topicDisplayOnLcd", &displayOnLcd );
+ros::Subscriber<std_msgs::String> lcdSubscriber(TOPIC_DISPLAY_ON_LCD, &displayOnLcd );
 
 
 void rosSetup()
