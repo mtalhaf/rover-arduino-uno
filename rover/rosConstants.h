@@ -6,7 +6,7 @@
 #define rosconstants_h
 
 
-const char TOPIC_DISPLAY_ON_LCD[] = "topic_displayOnLcd";  //topic to display on lcd
+const char TOPIC_LCD_PRINT_MESSAGE[] = "lcd/printMessage";  //topic to display on lcd
 
 
 #endif
