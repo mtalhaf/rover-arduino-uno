@@ -13,6 +13,7 @@
 #include "ObstacleDetection.h"
 #include "EdgeDetection.h"
 #include "Wire.h"
+#include "rosInit.h"
 #include "LiquidCrystal_I2C.h" // Library included seperately to control the LCD display
 
 
@@ -23,7 +24,9 @@ Ultrasonic* ultrasonicFrontEdge;
 Movement* movement;
 ObstacleDetection* obstacleDetection;
 EdgeDetection* frontEdgeObstacleDetection;
-LiquidCrystal_I2C* lcd;
+
+//gets declared in rosInit
+//LiquidCrystal_I2C* lcd;
 
 
 
@@ -36,7 +39,8 @@ void setUpSensorObjects(){
   motorB = new Motor(motorB_dir_pin, motorB_brake_pin, motorB_speed_pin);
   ultrasonicFront = new Ultrasonic(ultrasonic_front_trigger_pin, ultrasonic_front_echo_pin);
   ultrasonicFrontEdge = new Ultrasonic(ultrasonic_front_edge_trigger_pin, ultrasonic_front_edge_echo_pin);
-  lcd = new LiquidCrystal_I2C(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
+  //not needed as already declared in ros init
+  //lcd = new LiquidCrystal_I2C(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
 }
 
 
@@ -98,6 +102,7 @@ void setUpLCD() {
 }
 
 void initialise(){
+  rosSetup(); //sets up ros
   setUpObjects(); //sets up the functional objects
   setUpMotorPins(); //sets up all the motor pins
   setUpUltraSonicRangeFinderPins(); //sets up all ultra sonic pins
