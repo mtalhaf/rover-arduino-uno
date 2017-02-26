@@ -33,7 +33,7 @@ boolean EdgeDetection::detectEdges(){
   if (displayOnLcd){
     lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("distance:");
+    lcd->print(F("distance:"));
     lcd->setCursor(0,1);
     lcd->print(distanceToObject, DEC);
   }
@@ -65,9 +65,9 @@ void EdgeDetection::avoidEdge(){
     if (displayOnLcd){
       lcd->clear();
       lcd->setCursor(0,0);
-      lcd->print("Obstacle ahead");
+      lcd->print(F("Obstacle ahead"));
       lcd->setCursor(0,1);
-      lcd->print("Avoiding");
+      lcd->print(F("Avoiding"));
     }
     movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
     edge = detectEdges();
