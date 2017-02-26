@@ -5,15 +5,19 @@
 #ifndef rosMovementCallback_h
 #define rosMovementCallback_h
 
+#include "rosCallbackChecks.h"
 #include "rosConstants.h"
 #include <ros.h>
 #include <std_msgs/Empty.h>
+
  
 /*
  * Moves rover forward
  */
 
 void moveRoverForward(const std_msgs::Empty& message){
+  moveBackward = false;
+  moveForward = true;
 }
 
 /*
@@ -26,6 +30,8 @@ ros::Subscriber<std_msgs::Empty> movementMoveForwardSubscriber(TOPIC_MOVEMENT_MO
  */
 
 void moveRoverBackward(const std_msgs::Empty& message){
+  moveBackward = true;
+  moveForward = false;
 }
 
 /*
@@ -38,6 +44,8 @@ ros::Subscriber<std_msgs::Empty> movementMoveBackwardSubscriber(TOPIC_MOVEMENT_M
  */
 
 void turnRoverLeft(const std_msgs::Empty& message){
+  turnLeft = true;
+  turnRight = false;
 }
 
 /*
@@ -50,6 +58,8 @@ ros::Subscriber<std_msgs::Empty> movementTurnRoverLeftSubscriber(TOPIC_MOVEMENT_
  */
 
 void turnRoverRight(const std_msgs::Empty& message){
+  turnLeft = false;
+  turnRight = true;
 }
 
 /*
@@ -62,6 +72,11 @@ ros::Subscriber<std_msgs::Empty> movementTurnRoverRightSubscriber(TOPIC_MOVEMENT
  */
 
 void stopRover(const std_msgs::Empty& message){
+  stopRoverMovement = true;
+  moveForward = false;
+  moveBackward = false;
+  turnLeft = false;
+  turnRight = false;
 }
 
 /*

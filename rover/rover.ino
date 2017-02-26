@@ -10,6 +10,7 @@
 #include "init.h"
 #include "obstacleDetection.h"
 #include "movement.h"
+#include "rosCallbackChecks.h"
 
 void setup() {
   initialise(); // from init.h
@@ -65,8 +66,26 @@ void moveInAllDirections(){
   movement->stopRoverMotors();
 }
 
+void rosCommands(){
+  if (stopRoverMovement)
+    movement->stopRoverMotors();
+
+  if (moveForward)
+    movement->moveForward(ROVER_SPEED);
+
+  if (moveBackward)
+     movement->moveBackward(ROVER_SPEED);
+
+  if (turnLeft)
+    movement->turnRoverWithoutMovement(ROVER_SPEED, ROVER_TURN_LEFT);
+
+  if (turnRight)
+    movement->turnRoverWithoutMovement(ROVER_SPEED, ROVER_TURN_RIGHT);
+}
+
 void loop() {
   //moveRoverAround();
+  rosCommands();
   rosLoop();
   //shyRover();
 }
