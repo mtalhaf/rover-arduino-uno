@@ -18,6 +18,7 @@
 void moveRoverForward(const std_msgs::Empty& message){
   moveBackward = false;
   moveForward = true;
+  stopRoverMovement = false;
 }
 
 /*
@@ -32,6 +33,7 @@ ros::Subscriber<std_msgs::Empty> movementMoveForwardSubscriber(TOPIC_MOVEMENT_MO
 void moveRoverBackward(const std_msgs::Empty& message){
   moveBackward = true;
   moveForward = false;
+  stopRoverMovement = false;
 }
 
 /*
@@ -46,6 +48,7 @@ ros::Subscriber<std_msgs::Empty> movementMoveBackwardSubscriber(TOPIC_MOVEMENT_M
 void turnRoverLeft(const std_msgs::Empty& message){
   turnLeft = true;
   turnRight = false;
+  stopRoverMovement = false;
 }
 
 /*
@@ -60,6 +63,7 @@ ros::Subscriber<std_msgs::Empty> movementTurnRoverLeftSubscriber(TOPIC_MOVEMENT_
 void turnRoverRight(const std_msgs::Empty& message){
   turnLeft = false;
   turnRight = true;
+  stopRoverMovement = false;
 }
 
 /*

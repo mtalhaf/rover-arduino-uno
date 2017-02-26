@@ -13,7 +13,7 @@ boolean moveForward = false; // check for moving the rover forward
 boolean moveBackward = false; // check for moving the rover backward
 boolean turnLeft = false; // check for turing the rover left
 boolean turnRight = false; // check for turning the rover right
-boolean stopRoverMovement = true; // check for stopping the rover
+boolean stopRoverMovement = false; // check for stopping the rover
 
 
 
