@@ -106,6 +106,6 @@ void rosCommands(){
 void loop() {
   //moveRoverAround();
   //rosCommands();
-  //rosLoop();
+  rosLoop();
   //shyRover();
 }

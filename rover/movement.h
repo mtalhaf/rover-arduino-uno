@@ -28,20 +28,20 @@ class Movement{
     void roverMotorsBackward(); // moves the rover backward
     void disengageRoverBrakes(); // disengages the rover brakes
     void stopRoverMotors(); // stops the rover
-    void moveRover(int roverSpeed); // sets the rover speed
+    void moveRover(uint8_t roverSpeed); // sets the rover speed
     
-    void moveRover(int roverSpeed, int roverDirection); // moves the rover in a specific direction
-    void moveForward(int roverSpeed); // moves the rover forward
-    void moveBackward(int roverSpeed); // moves the rover backward
+    void moveRover(uint8_t roverSpeed, uint8_t roverDirection); // moves the rover in a specific direction
+    void moveForward(uint8_t roverSpeed); // moves the rover forward
+    void moveBackward(uint8_t roverSpeed); // moves the rover backward
     
-    void turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay); // turns the rover in a specific direction and turn for a specific amount of time
-    void turnRover(int roverSpeed, int roverDirection, int roverTurn); // keeps turning the rover in a specific direction and turn 
-    void turnRoverWithoutMovement(int roverSpeed, int roverTurn, int turnDelay); // turns the rover in a specific turn 
-    void turnRoverWithoutMovement(int roverSpeed, int roverTurn); // keeps turning the rover in a specific turn 
-    void turnLeftForward(int roverSpeed, int turnDelay); // turns the rover left forward
-    void turnRightForward(int roverSpeed, int turnDelay); // turns the rover right forward
-    void turnLeftBack(int roverSpeed, int turnDelay); // turns the rover left backwards
-    void turnRightBack(int roverSpeed, int turnDelay); // turns the rover right backwards
+    void turnRover(uint8_t roverSpeed, uint8_t roverDirection, uint8_t roverTurn, uint8_t turnDelay); // turns the rover in a specific direction and turn for a specific amount of time
+    void turnRover(uint8_t roverSpeed, uint8_t roverDirection, uint8_t roverTurn); // keeps turning the rover in a specific direction and turn 
+    void turnRoverWithoutMovement(uint8_t roverSpeed, uint8_t roverTurn, uint8_t turnDelay); // turns the rover in a specific turn 
+    void turnRoverWithoutMovement(uint8_t roverSpeed, uint8_t roverTurn); // keeps turning the rover in a specific turn 
+    void turnLeftForward(uint8_t roverSpeed, uint8_t turnDelay); // turns the rover left forward
+    void turnRightForward(uint8_t roverSpeed, uint8_t turnDelay); // turns the rover right forward
+    void turnLeftBack(uint8_t roverSpeed, uint8_t turnDelay); // turns the rover left backwards
+    void turnRightBack(uint8_t roverSpeed, uint8_t turnDelay); // turns the rover right backwards
 };
 
 #endif
