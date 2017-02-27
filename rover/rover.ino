@@ -69,43 +69,43 @@ void moveInAllDirections(){
 void rosCommands(){
   if (stopRoverMovement){
     movement->stopRoverMotors();
-    //lcd->clear();
+    lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("stopping");
+    lcd->print(F("stopping"));
   }
 
-  //if (moveForward){
+  if (moveForward){
     movement->moveForward(ROVER_SPEED);
-    //lcd->clear();
+    lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("forward");
-  //}
+    lcd->print(F("forward"));
+  }
 
   if (moveBackward){
      movement->moveBackward(ROVER_SPEED);
-     //lcd->clear();
+     lcd->clear();
      lcd->setCursor(0,0);
-     lcd->print("backward");
+     lcd->print(F("backward"));
   }
 
   if (turnLeft){
     movement->turnRoverWithoutMovement(ROVER_SPEED, ROVER_TURN_LEFT);
-    //lcd->clear();
+    lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("left");
+    lcd->print(F("left"));
   }
 
   if (turnRight){
     movement->turnRoverWithoutMovement(ROVER_SPEED, ROVER_TURN_RIGHT);
-    //lcd->clear();
+    lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("right");
+    lcd->print(F("right"));
   }
 }
 
 void loop() {
   //moveRoverAround();
-  //rosCommands();
-  //rosLoop();
-  shyRover();
+  rosCommands();
+  rosLoop();
+  //shyRover();
 }

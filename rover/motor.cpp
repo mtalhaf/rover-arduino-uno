@@ -9,7 +9,7 @@
  */
 
 // Constructor implementation
-Motor::Motor(int motorDirPin, int motorBrakePin, int motorSpeedPin){
+Motor::Motor(uint8_t motorDirPin, uint8_t motorBrakePin, uint8_t motorSpeedPin){
   motor_dir_pin = motorDirPin;
   motor_brake_pin = motorBrakePin;
   motor_speed_pin = motorSpeedPin;
@@ -44,6 +44,6 @@ void Motor::stopMotor(){
 }
 
 // Moves the motor with the given speed
-void Motor::moveMotor(int motorSpeed){
+void Motor::moveMotor(uint8_t motorSpeed){
   analogWrite(motor_speed_pin, motorSpeed);
 }

@@ -8,7 +8,7 @@
  * Start of Edge Detection class
  */
 
-EdgeDetection::EdgeDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold, int thresholdBounds) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+EdgeDetection::EdgeDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, uint8_t distanceThreshold, uint8_t thresholdBounds) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
   this->displayOnLcd = displayOnLcd;
   this->distanceThreshold = distanceThreshold;
   this->thresholdBounds = thresholdBounds;
@@ -20,9 +20,9 @@ EdgeDetection::EdgeDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidC
 
 boolean EdgeDetection::detectEdges(){
 
-  long distanceToObject; // distance to the detected object
-  long maxThreshold = distanceThreshold + thresholdBounds; // maximum ThresholdBound
-  long minThreshold = distanceThreshold - thresholdBounds; // minimum THresholdBound
+  int distanceToObject; // distance to the detected object
+  uint8_t maxThreshold = distanceThreshold + thresholdBounds; // maximum ThresholdBound
+  uint8_t minThreshold = distanceThreshold - thresholdBounds; // minimum THresholdBound
   
   ultrasonic->echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = ultrasonic->getDistance();
@@ -33,7 +33,7 @@ boolean EdgeDetection::detectEdges(){
   if (displayOnLcd){
     lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("distance:");
+    lcd->print(F("distance:"));
     lcd->setCursor(0,1);
     lcd->print(distanceToObject, DEC);
   }
@@ -47,8 +47,8 @@ boolean EdgeDetection::detectEdges(){
 
 void EdgeDetection::avoidEdge(){
 
-  int turnDirection = random(1,3); // initialise random turn to take left/ right
-  int roverDirection = random(1,3); // initialise random direction to take forward/ back
+  uint8_t turnDirection = random(1,3); // initialise random turn to take left/ right
+  uint8_t roverDirection = random(1,3); // initialise random direction to take forward/ back
   boolean edge = detectEdges(); // variable to see if obstacle is still in place
   boolean avoidedEdge = false; // variable t check if an obstacle was avoided
 
@@ -65,9 +65,9 @@ void EdgeDetection::avoidEdge(){
     if (displayOnLcd){
       lcd->clear();
       lcd->setCursor(0,0);
-      lcd->print("Obstacle ahead");
+      lcd->print(F("Obstacle ahead"));
       lcd->setCursor(0,1);
-      lcd->print("Avoiding");
+      lcd->print(F("Avoiding"));
     }
     movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
     edge = detectEdges();
