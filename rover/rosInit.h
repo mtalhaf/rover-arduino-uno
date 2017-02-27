@@ -21,10 +21,7 @@ void rosSetup()
   rosNodeHandle.subscribe(lcdDisplaySubscriber);
   rosNodeHandle.subscribe(lcdClearDisplaySubscriber);
 
-  rosNodeHandle.subscribe(movementMoveForwardSubscriber);
-  rosNodeHandle.subscribe(movementMoveBackwardSubscriber);
-  rosNodeHandle.subscribe(movementTurnRoverLeftSubscriber);
-  rosNodeHandle.subscribe(movementTurnRoverRightSubscriber);
+  rosNodeHandle.subscribe(movementMoveRoverSubscriber);
   rosNodeHandle.subscribe(movementStopRoverSubscriber);
 }
 
