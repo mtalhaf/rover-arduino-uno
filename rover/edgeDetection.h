@@ -24,12 +24,12 @@ class EdgeDetection{
     Ultrasonic* ultrasonic; // ultrasonic object
     LiquidCrystal_I2C* lcd; // lcd object
     boolean displayOnLcd;
-    int distanceThreshold;
-    int thresholdBounds;
+    uint8_t distanceThreshold;
+    uint8_t thresholdBounds;
 
   // public methods for edge detection
   public:
-    EdgeDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold, int thresholdBounds); // initialises edge detection class with bounds for the threshold
+    EdgeDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, uint8_t distanceThreshold, uint8_t thresholdBounds); // initialises edge detection class with bounds for the threshold
     boolean detectEdges(); // detects edges
     void avoidEdge(); // avoids edge
 

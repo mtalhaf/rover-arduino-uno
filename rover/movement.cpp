@@ -19,7 +19,7 @@ Movement::Movement(Motor* motorA, Motor* motorB) : motorA(motorA), motorB(motorB
  * been placed such that moving these 2 motors in opposite direction
  * moves the rover in 1 direction: backward or forward.
  */
-void Movement::moveRover(int roverSpeed, int roverDirection){
+void Movement::moveRover(uint8_t roverSpeed, uint8_t roverDirection){
 
   // Switches the rover direction to know which direction to move the motors in
   switch(roverDirection){
@@ -40,7 +40,7 @@ void Movement::moveRover(int roverSpeed, int roverDirection){
  * Moves the rover forward, takes the rover speed
  * as the input
  */
-void Movement::moveForward(int roverSpeed){
+void Movement::moveForward(uint8_t roverSpeed){
   moveRover(roverSpeed, ROVER_FORWARD_DIRECTION);
 }
 
@@ -48,7 +48,7 @@ void Movement::moveForward(int roverSpeed){
  * Moves the rover backward, takes the rover speed
  * as the input
  */
-void Movement::moveBackward(int roverSpeed){
+void Movement::moveBackward(uint8_t roverSpeed){
   moveRover(roverSpeed, ROVER_BACKWARD_DIRECTION);
 }
 
@@ -62,7 +62,7 @@ void Movement::moveBackward(int roverSpeed){
  * 
  * After the delay the motors are also stopped.
  */
-void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn, int turnDelay){
+void Movement::turnRover(uint8_t roverSpeed, uint8_t roverDirection, uint8_t roverTurn, uint8_t turnDelay){
 
   // switchs which way to turn the rover in
   switch(roverTurn){    
@@ -93,7 +93,7 @@ void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn, int 
  * turning effect which turns the rover.
  * 
  */
-void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn){
+void Movement::turnRover(uint8_t roverSpeed, uint8_t roverDirection, uint8_t roverTurn){
   turnRover(roverSpeed, roverDirection, roverTurn, 0);
 }
 
@@ -105,7 +105,7 @@ void Movement::turnRover(int roverSpeed, int roverDirection, int roverTurn){
  * turning effect which turns the rover.
  * 
  */
-void Movement::turnRoverWithoutMovement(int roverSpeed, int roverTurn, int turnDelay){
+void Movement::turnRoverWithoutMovement(uint8_t roverSpeed, uint8_t roverTurn, uint8_t turnDelay){
   
   // switchs which way to turn the rover in
   switch(roverTurn){    
@@ -137,7 +137,7 @@ void Movement::turnRoverWithoutMovement(int roverSpeed, int roverTurn, int turnD
  * turning effect which turns the rover.
  * 
  */
-void Movement::turnRoverWithoutMovement(int roverSpeed, int roverTurn){
+void Movement::turnRoverWithoutMovement(uint8_t roverSpeed, uint8_t roverTurn){
   turnRoverWithoutMovement(roverSpeed, roverTurn, 0);
 }
 
@@ -146,7 +146,7 @@ void Movement::turnRoverWithoutMovement(int roverSpeed, int roverTurn){
   * Turn the rover left, takes the rover speed
   * as the input and the turnDelay
   */
-void Movement::turnLeftForward(int roverSpeed, int turnDelay){
+void Movement::turnLeftForward(uint8_t roverSpeed, uint8_t turnDelay){
   turnRover(roverSpeed, ROVER_FORWARD_DIRECTION, ROVER_TURN_LEFT, turnDelay);
 }
 
@@ -154,7 +154,7 @@ void Movement::turnLeftForward(int roverSpeed, int turnDelay){
  * Turn the rover right, takes the rover speed
  * as the input and the turnDelay
  */
-void Movement::turnRightForward(int roverSpeed, int turnDelay){
+void Movement::turnRightForward(uint8_t roverSpeed, uint8_t turnDelay){
   turnRover(roverSpeed, ROVER_FORWARD_DIRECTION, ROVER_TURN_RIGHT, turnDelay);
 }
 
@@ -162,7 +162,7 @@ void Movement::turnRightForward(int roverSpeed, int turnDelay){
  * Turn the rover left backwards, takes the rover speed
  * as the input and the turnDelay
  */
-void Movement::turnLeftBack(int roverSpeed, int turnDelay){
+void Movement::turnLeftBack(uint8_t roverSpeed, uint8_t turnDelay){
   turnRover(roverSpeed, ROVER_BACKWARD_DIRECTION, ROVER_TURN_LEFT, turnDelay);
 }
 
@@ -170,7 +170,7 @@ void Movement::turnLeftBack(int roverSpeed, int turnDelay){
  * Turn the rover right backwards, takes the rover speed
  * as the input and the turnDelay
  */
-void Movement::turnRightBack(int roverSpeed, int turnDelay){
+void Movement::turnRightBack(uint8_t roverSpeed, uint8_t turnDelay){
   turnRover(roverSpeed, ROVER_BACKWARD_DIRECTION, ROVER_TURN_RIGHT, turnDelay);
 }
 
@@ -199,7 +199,7 @@ void Movement::stopRoverMotors(){
 }
 
 // sets the rover speed and starts moving the rover
-void Movement::moveRover(int roverSpeed){
+void Movement::moveRover(uint8_t roverSpeed){
   motorA->moveMotor(roverSpeed);
   motorB->moveMotor(roverSpeed);
 }

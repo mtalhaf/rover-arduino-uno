@@ -8,7 +8,7 @@
  * Start of Obstacle Detection class
  */
 
-ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, int distanceThreshold) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
+ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic, LiquidCrystal_I2C* lcd, boolean displayOnLcd, uint8_t distanceThreshold) : movement(movement), ultrasonic(ultrasonic), lcd(lcd){
   this->displayOnLcd = displayOnLcd;
   this->distanceThreshold = distanceThreshold;
 }
@@ -19,7 +19,7 @@ ObstacleDetection::ObstacleDetection(Movement* movement, Ultrasonic* ultrasonic,
 
 boolean ObstacleDetection::detectObstacles(){
 
-  long distanceToObject; // distance to the detected object
+  int distanceToObject; // distance to the detected object
   
   ultrasonic->echoUltraSonic(); //echos the ultra sonic to check for obstacles
   distanceToObject = ultrasonic->getDistance();
@@ -30,7 +30,7 @@ boolean ObstacleDetection::detectObstacles(){
   if (displayOnLcd){
     lcd->clear();
     lcd->setCursor(0,0);
-    lcd->print("distance:");
+    lcd->print(F("distance:"));
     lcd->setCursor(0,1);
     lcd->print(distanceToObject, DEC);
   }
@@ -45,8 +45,8 @@ boolean ObstacleDetection::detectObstacles(){
 
 void ObstacleDetection::avoidObstacle(){
 
-  int turnDirection = random(1,3); // initialise random turn to take left/ right
-  int roverDirection = random(1,3); // initialise random direction to take forward/ back
+  uint8_t turnDirection = random(1,3); // initialise random turn to take left/ right
+  uint8_t roverDirection = random(1,3); // initialise random direction to take forward/ back
   boolean obstacle = detectObstacles(); // variable to see if obstacle is still in place
   boolean avoidedObtacle = false; // variable t check if an obstacle was avoided
 
@@ -56,9 +56,9 @@ void ObstacleDetection::avoidObstacle(){
     if (displayOnLcd){
       lcd->clear();
       lcd->setCursor(0,0);
-      lcd->print("Obstacle ahead");
+      lcd->print(F("Obstacle ahead"));
       lcd->setCursor(0,1);
-      lcd->print("Avoiding");
+      lcd->print(F("Avoiding"));
     }
     
     movement->turnRoverWithoutMovement(ROVER_SPEED, turnDirection); // turns the rover at full speed in the random turn
