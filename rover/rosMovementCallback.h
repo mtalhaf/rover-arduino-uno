@@ -86,6 +86,6 @@ void stopRover(const std_msgs::Empty& message){
 /*
  * Ros subscriber for stopping the rover
  */
-ros::Subscriber<std_msgs::Empty> movementStopRoverSubscriber(TOPIC_MOVEMENT_TURN_RIGHT, &stopRover );
+ros::Subscriber<std_msgs::Empty> movementStopRoverSubscriber(TOPIC_MOVEMENT_STOP_ROVER, &stopRover );
 
 #endif
