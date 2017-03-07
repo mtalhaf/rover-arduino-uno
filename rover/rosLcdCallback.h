@@ -41,7 +41,7 @@ void clearDisplayOnLcd(const std_msgs::Empty& message){
 /*
  * Ros subscriber for the lcd display
  */
-ros::Subscriber<std_msgs::Empty> lcdClearDisplaySubscriber(TOPIC_MOVEMENT_STOP_ROVER, &clearDisplayOnLcd );
+ros::Subscriber<std_msgs::Empty> lcdClearDisplaySubscriber(TOPIC_LCD_CLEAR_SCREEN, &clearDisplayOnLcd );
 
 #endif
 
